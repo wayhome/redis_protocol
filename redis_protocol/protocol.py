@@ -47,6 +47,26 @@ def parse_chunked(data, start=0):
         return result if start == 0 else [result, index + len(DELIMITER) + length]
 
 
+def parse_stream(data):
+    cursor = 0
+    data_len = len(data)
+    result = []
+    while cursor < data_len :
+        pdata = data[cursor:]
+        index = pdata.find(DELIMITER)
+        count = int(pdata[1:index])
+
+        cmd = ''
+        start = index + len(DELIMITER)
+        for i in range(count):
+            chunk, length = parse_chunked(pdata, start)
+            start = length + len(DELIMITER)
+            cmd  += " " + chunk
+        cursor += start
+        result.append(cmd.strip())
+    return result
+
+
 def parse_status(data):
     return [True, data[1:]]
 
