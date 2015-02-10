@@ -31,3 +31,15 @@ I had used it in my `redis_proxy <https://github.com/youngking/redis_proxy>`_ pr
     ... ["ping"]
     >>> decode("$6\r\nfoobar\r\n")  # decode a response
     ... "foobar"
+
+
+parse redis protocol stream  
+---
+parse redis protocol stream to redis commands
+
+example :
+
+data = '*3\r\n$3\r\nSET\r\n$15\r\nmemtier-8232902\r\n$2\r\nxx\r\n*3\r\n$3\r\nSET\r\n$15\r\nmemtier-8232902\r\n$2\r\nxx\r\n*3\r\n$3\r\nSET\r\n$15\r\nmemtier-7630684\r\n$3\r\nAAA\r\n'
+print parse_stream(data)
+
+
