@@ -43,4 +43,7 @@ example :
     data = '*3\r\n$3\r\nSET\r\n$15\r\nmemtier-8232902\r\n$2\r\nxx\r\n*3\r\n$3\r\nSET\r\n$15\r\nmemtier-8232902\r\n$2\r\nxx\r\n*3\r\n$3\r\nSET\r\n$15\r\nmemtier-7630684\r\n$3\r\nAAA\r\n'
     print parse_stream(data)
 
+routput :
+::
 
+    ['SET memtier-8232902 xx', 'SET memtier-8232902 xx', 'SET memtier-7630684 AAA']
