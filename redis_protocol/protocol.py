@@ -97,3 +97,5 @@ if __name__ == '__main__':
     print(decode(encode("ping")))
     print((encode("set some value")))
     print(encode("foobar"))
+    data = '*3\r\n$3\r\nSET\r\n$15\r\nmemtier-8232902\r\n$2\r\nxx\r\n*3\r\n$3\r\nSET\r\n$15\r\nmemtier-8232902\r\n$2\r\nxx\r\n*3\r\n$3\r\nSET\r\n$15\r\nmemtier-7630684\r\n$3\r\nAAA\r\n'
+    print parse_stream(data)
