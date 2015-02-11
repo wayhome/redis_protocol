@@ -35,7 +35,7 @@ I had used it in my `redis_proxy <https://github.com/youngking/redis_proxy>`_ pr
 
 parse redis protocol stream  
 ------
-parse redis protocol stream to redis commands
+parse redis protocol stream to redis commands，such as redis pipeline requests or raw responses.
 
 example :
 -----------
