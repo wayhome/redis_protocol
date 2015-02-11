@@ -34,11 +34,11 @@ I had used it in my `redis_proxy <https://github.com/youngking/redis_proxy>`_ pr
 
 
 parse redis protocol stream  
--------
+------
 parse redis protocol stream to redis commands
 
 example :
-----------
+-----------
 ::
 
     data = '*3\r\n$3\r\nSET\r\n$15\r\nmemtier-8232902\r\n$2\r\nxx\r\n
@@ -47,7 +47,7 @@ example :
     print parse_stream(data)
 
 output :
-----------
+-----------
 ::
 
     ['SET memtier-8232902 xx', 'SET memtier-8232902 xx', 'SET memtier-7630684 AAA']
