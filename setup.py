@@ -19,7 +19,7 @@ history = open('HISTORY.rst').read().replace('.. :changelog:', '')
 
 setup(
     name='redis_protocol',
-    version='0.0.1',
+    version='0.0.2',
     description='Redis Protocol implemented by python',
     long_description=readme + '\n\n' + history,
     author='Young King',
