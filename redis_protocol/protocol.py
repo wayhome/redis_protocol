@@ -47,6 +47,26 @@ def parse_chunked(data, start=0):
         return result if start == 0 else [result, index + len(DELIMITER) + length]
 
 
+def parse_stream(data):
+    cursor = 0
+    data_len = len(data)
+    result = []
+    while cursor < data_len :
+        pdata = data[cursor:]
+        index = pdata.find(DELIMITER)
+        count = int(pdata[1:index])
+
+        cmd = ''
+        start = index + len(DELIMITER)
+        for i in range(count):
+            chunk, length = parse_chunked(pdata, start)
+            start = length + len(DELIMITER)
+            cmd  += " " + chunk
+        cursor += start
+        result.append(cmd.strip())
+    return result
+
+
 def parse_status(data):
     return [True, data[1:]]
 
@@ -77,3 +97,5 @@ if __name__ == '__main__':
     print(decode(encode("ping")))
     print((encode("set some value")))
     print(encode("foobar"))
+    data = '*3\r\n$3\r\nSET\r\n$15\r\nmemtier-8232902\r\n$2\r\nxx\r\n*3\r\n$3\r\nSET\r\n$15\r\nmemtier-8232902\r\n$2\r\nxx\r\n*3\r\n$3\r\nSET\r\n$15\r\nmemtier-7630684\r\n$3\r\nAAA\r\n'
+    print parse_stream(data)
